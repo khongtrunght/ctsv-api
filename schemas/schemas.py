@@ -6,8 +6,6 @@ from enum import Enum
 from pydantic import BaseModel
 
 
-
-
 class UAStatusClass(int, Enum):
     reject = 0
     pending = 1
@@ -22,10 +20,16 @@ class PointCal(BaseModel):
         pass
 
     def get_current_point(self):
+        self.re_caculate_current_point()
         return min(self.get_max_point(), self.CurrentPoint)
 
     def set_current_point(self, value):
         self.CurrentPoint = value
+        self.re_caculate_current_point()
+
+    @abstractmethod
+    def re_caculate_current_point(self):
+        pass
 
 
 class Criteria(BaseModel):
@@ -38,6 +42,9 @@ class Criteria(BaseModel):
 
 
 class CriteriaView(PointCal):
+    def re_caculate_current_point(self):
+        pass
+
     CGroupId: int = None
     CId: int
     CName: str
@@ -45,8 +52,6 @@ class CriteriaView(PointCal):
 
     def get_max_point(self):
         return self.CMaxPoint
-
-
 
 
 class Activity(BaseModel):
@@ -86,7 +91,6 @@ class ActivityView(BaseModel):
     UAStatus: UAStatusClass
 
 
-
 class CriteriaGroup(PointCal):
     CGId: int
     CGName: str
@@ -95,6 +99,10 @@ class CriteriaGroup(PointCal):
 
     def get_max_point(self):
         return self.CGMaxPoint
+
+    def re_caculate_current_point(self):
+        self.CurrentPoint = min(sum([cv.get_current_point() for cv in self.UserCriteriaDetailsLst]),
+                                self.get_max_point())
 
 
 class CriteriaType(PointCal):
@@ -107,6 +115,18 @@ class CriteriaType(PointCal):
     def get_max_point(self):
         return self.CTMaxPoint
 
+    def re_caculate_current_point(self):
+        self.CurrentPoint = min(sum([cg.get_current_point() for cg in self.CriteriaGroupDetailsLst]),
+                                self.get_max_point())
+
 
 class DRL(PointCal):
-    MaxPoint: float = 100
+    CriterialTypesLst: List[CriteriaType]
+    MaxPoint: float = 100.0
+
+    def re_caculate_current_point(self):
+        self.CurrentPoint = min(sum([ct.get_current_point() for ct in self.CriterialTypesLst]),
+                                self.get_max_point())
+
+    def get_max_point(self):
+        return self.MaxPoint
