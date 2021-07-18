@@ -51,7 +51,7 @@ class CriteriaView(PointCal):
     CMaxPoint: float
 
     def get_max_point(self):
-        return self.CMaxPoint
+        return max(self.CMaxPoint,0)
 
 
 class Activity(BaseModel):
@@ -98,7 +98,7 @@ class CriteriaGroup(PointCal):
     UserCriteriaDetailsLst: List[CriteriaView]
 
     def get_max_point(self):
-        return self.CGMaxPoint
+        return max(0,self.CGMaxPoint)
 
     def re_caculate_current_point(self):
         self.CurrentPoint = min(sum([cv.get_current_point() for cv in self.UserCriteriaDetailsLst]),
@@ -113,7 +113,7 @@ class CriteriaType(PointCal):
     CriteriaGroupDetailsLst: List[CriteriaGroup]
 
     def get_max_point(self):
-        return self.CTMaxPoint
+        return max(0,self.CTMaxPoint)
 
     def re_caculate_current_point(self):
         self.CurrentPoint = min(sum([cg.get_current_point() for cg in self.CriteriaGroupDetailsLst]),
@@ -121,11 +121,11 @@ class CriteriaType(PointCal):
 
 
 class DRL(PointCal):
-    CriterialTypesLst: List[CriteriaType]
+    CriteriaTypeDetailsLst: List[CriteriaType]
     MaxPoint: float = 100.0
 
     def re_caculate_current_point(self):
-        self.CurrentPoint = min(sum([ct.get_current_point() for ct in self.CriterialTypesLst]),
+        self.CurrentPoint = min(sum([ct.get_current_point() for ct in self.CriteriaTypeDetailsLst]),
                                 self.get_max_point())
 
     def get_max_point(self):

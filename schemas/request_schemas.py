@@ -17,6 +17,6 @@ class RqtCriteria(User):
 
 class RqtActivityUser(User):
     UserCode : str
-    Search : str
+    Search : str = ""
     PageNumber : int = 1
-    NumberRow : int = 12
+    NumberRow : int = 100
