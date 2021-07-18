@@ -1,6 +1,7 @@
 from uplink import Consumer, Body, post
 
-from schemas import *
+from schemas.request_schemas import *
+from schemas.response_schemas import RspCriteriaTypeDetails, RspActivityView
 
 
 class Student(Consumer):

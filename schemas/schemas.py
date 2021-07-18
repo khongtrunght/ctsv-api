@@ -6,6 +6,8 @@ from enum import Enum
 from pydantic import BaseModel
 
 
+
+
 class UAStatusClass(int, Enum):
     reject = 0
     pending = 1
@@ -24,6 +26,27 @@ class PointCal(BaseModel):
 
     def set_current_point(self, value):
         self.CurrentPoint = value
+
+
+class Criteria(BaseModel):
+    CGroupId: int
+    CId: int
+    CName: str
+    CType: int
+    CMaxPoint: float
+    CStatus: int
+
+
+class CriteriaView(PointCal):
+    CGroupId: int = None
+    CId: int
+    CName: str
+    CMaxPoint: float
+
+    def get_max_point(self):
+        return self.CMaxPoint
+
+
 
 
 class Activity(BaseModel):
@@ -62,24 +85,6 @@ class ActivityView(BaseModel):
     CriteriaLst: List[CriteriaView] = None
     UAStatus: UAStatusClass
 
-
-class Criteria(BaseModel):
-    CGroupId: int
-    CId: int
-    CName: str
-    CType: int
-    CMaxPoint: float
-    CStatus: int
-
-
-class CriteriaView(PointCal):
-    CGroupId: int = None
-    CId: int
-    CName: str
-    CMaxPoint: float
-
-    def get_max_point(self):
-        return self.CMaxPoint
 
 
 class CriteriaGroup(PointCal):

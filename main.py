@@ -1,7 +1,7 @@
-from schemas import *
-from student import Student
+from consumer.student import Student
 from pprint import  pprint as pp
-import json
+
+from schemas.request_schemas import RqtActivityUser, User
 
 me = Student(base_url="https://ctsv.hust.edu.vn/")
 # d = {"AId":"1837","TokenCode":"B81FDBCA017219DF2BF071BECCD61996","UserName":"20194461"}
