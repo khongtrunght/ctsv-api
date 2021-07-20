@@ -2,6 +2,8 @@ from uplink import Consumer, Body, post, headers
 
 from schemas.request_schemas import *
 from schemas.response_schemas import RspCriteriaTypeDetails, RspActivityView
+from models.drl_graph import cid_list
+from schemas.schemas import ActivityView
 
 
 class Student(Consumer):
@@ -10,7 +12,7 @@ class Student(Consumer):
         """Get detail info for an activity by id"""
 
     @post("api-t/Activity/GetActivityByCId")
-    def get_activity_by_cid(self, user: Body()):
+    def get_activity_by_cid(self, user: Body(type=RqtActivityUserCId)) -> RspActivityView:
         pass
 
     @headers({
@@ -28,3 +30,13 @@ class Student(Consumer):
     @post("api-t/Activity/GetActivityByUser")
     def get_activity_by_user(self, user_activity: Body(type=RqtActivityUser)) -> RspActivityView:
         pass
+
+    def get_all_possible_activites(self, user: Body(type=RqtActivityUserCId)) -> List[int]:
+        out_put = []
+        for id in cid_list:
+            user.CId = id
+            op = self.get_activity_by_cid(user).Activities
+            for activity in op:
+                out_put.append(activity.AId)
+
+        return out_put

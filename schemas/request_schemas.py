@@ -26,6 +26,10 @@ class RqtActivityUser(User):
     PageNumber: int = 1
     NumberRow: int = 100
 
+class RqtActivityUserCId(RqtActivityUser):
+    CId : Optional[int]
+
+
 
 class RqtMarkCriteria(User, DRL):
     UserCode: str

@@ -43,6 +43,12 @@ class Criteria(BaseModel):
 class ActivityId(BaseModel):
     AId : int
 
+    def __eq__(self, other):
+        return self.AId == other.AId
+
+    def __hash__(self):
+        return hash(self.AId)
+
 class CriteriaView(PointCal):
     def re_caculate_current_point(self):
         pass
@@ -87,8 +93,7 @@ class Activity(BaseModel):
     Signature: str
 
 
-class ActivityView(BaseModel):
-    AId: int
+class ActivityView(ActivityId):
     AName: str
     StartTime: datetime
     FinishTime: datetime
