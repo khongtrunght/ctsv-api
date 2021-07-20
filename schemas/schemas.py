@@ -51,7 +51,7 @@ class ActivityId(BaseModel):
 
 class CriteriaView(PointCal):
     def re_caculate_current_point(self):
-        pass
+        self.UCPoint = self.CurrentPoint
 
     CGroupId: int = None
     CId: int

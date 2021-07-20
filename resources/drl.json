@@ -174,16 +174,6 @@
               "Proof": 1,
               "ProofText": 0,
               "UserCriteriaActivityLst": [
-                {
-                  "UCAId": 6738222,
-                  "AId": 1837,
-                  "AName": "Thành viên CLB học thuật, Lab nghiên cứu, Nhóm nghiên cứu Viện CNTT&TT",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-07-02 00:00:00",
-                  "FinishTime": "2021-07-02 00:00:00",
-                  "UCAStatus": 1
-                }
               ]
             },
             {
@@ -198,16 +188,6 @@
               "Proof": 1,
               "ProofText": 0,
               "UserCriteriaActivityLst": [
-                {
-                  "UCAId": 6738223,
-                  "AId": 1419,
-                  "AName": "Tham gia tích cực Hội thi “Olympic tiếng Anh HSSV toàn quốc” lần thứ IV, năm 2021",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-02-09 00:00:00",
-                  "FinishTime": "2021-04-02 23:59:00",
-                  "UCAStatus": 1
-                }
               ]
             }
           ]
@@ -240,26 +220,6 @@
               "Proof": 1,
               "ProofText": 0,
               "UserCriteriaActivityLst": [
-                {
-                  "UCAId": 6738224,
-                  "AId": 1373,
-                  "AName": "Sinh hoạt công dân K62, K63, K64 Viện CNTT&TT",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-01-01 00:00:00",
-                  "FinishTime": "2021-03-31 00:00:00",
-                  "UCAStatus": 1
-                },
-                {
-                  "UCAId": 6738225,
-                  "AId": 1682,
-                  "AName": "SHCD chuyên đề \"Lập kế hoạch và giải tỏa áp lực học tập\"",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-05-29 09:00:00",
-                  "FinishTime": "2021-05-29 12:00:00",
-                  "UCAStatus": 1
-                }
               ]
             },
             {
@@ -274,36 +234,6 @@
               "Proof": 1,
               "ProofText": 0,
               "UserCriteriaActivityLst": [
-                {
-                  "UCAId": 6738226,
-                  "AId": 1163,
-                  "AName": "Họp lớp Kỳ 20201 - Viện CNTT&TT",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-01-21 00:00:00",
-                  "FinishTime": "2021-02-28 00:00:00",
-                  "UCAStatus": 1
-                },
-                {
-                  "UCAId": 6738227,
-                  "AId": 1366,
-                  "AName": "Hoạt động đại hội chi đoàn kỳ 20201",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-01-01 00:00:00",
-                  "FinishTime": "2021-02-28 00:00:00",
-                  "UCAStatus": 1
-                },
-                {
-                  "UCAId": 6738228,
-                  "AId": 1689,
-                  "AName": "[Họp lớp Viện CNTT&TT] Kỳ 20202 ",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-05-27 00:00:00",
-                  "FinishTime": "2021-05-27 00:00:00",
-                  "UCAStatus": 1
-                }
               ]
             },
             {
@@ -318,16 +248,6 @@
               "Proof": 1,
               "ProofText": 0,
               "UserCriteriaActivityLst": [
-                {
-                  "UCAId": 6738229,
-                  "AId": 1715,
-                  "AName": "Đánh giá và khảo sát mức độ nắm vững Quy định và Quy chế của SV kỳ 20202",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-06-05 00:00:00",
-                  "FinishTime": "2021-07-06 00:00:00",
-                  "UCAStatus": 1
-                }
               ]
             }
           ]
@@ -377,16 +297,6 @@
               "Proof": 1,
               "ProofText": 0,
               "UserCriteriaActivityLst": [
-                {
-                  "UCAId": 6738230,
-                  "AId": 1676,
-                  "AName": "Tháng Năm \"Nhớ về Bác\"",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-05-19 00:00:00",
-                  "FinishTime": "2021-05-26 23:00:00",
-                  "UCAStatus": 1
-                }
               ]
             },
             {
@@ -401,16 +311,6 @@
               "Proof": 1,
               "ProofText": 0,
               "UserCriteriaActivityLst": [
-                {
-                  "UCAId": 6738231,
-                  "AId": 1665,
-                  "AName": "Thực hiện quyền và trách nhiệm công dân khi tham gia bầu cử  đại biểu Quốc hội khóa XV và đại biểu Hội đồng nhân dân các cấp nhiệm kỳ 2021 - 2026",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-05-14 00:00:00",
-                  "FinishTime": "2021-05-24 00:00:00",
-                  "UCAStatus": 1
-                }
               ]
             }
           ]
@@ -443,16 +343,6 @@
               "Proof": 1,
               "ProofText": 0,
               "UserCriteriaActivityLst": [
-                {
-                  "UCAId": 6738232,
-                  "AId": 1649,
-                  "AName": "Bình chọn cho Đội tuyển VUG Dance Battle - Trường Đại học Bách khoa Hà Nội",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-05-04 00:00:00",
-                  "FinishTime": "2021-05-08 00:00:00",
-                  "UCAStatus": 1
-                }
               ]
             },
             {
@@ -467,16 +357,6 @@
               "Proof": 1,
               "ProofText": 0,
               "UserCriteriaActivityLst": [
-                {
-                  "UCAId": 6738233,
-                  "AId": 1588,
-                  "AName": "Giải chạy online \"10000 bước chân vì sức khỏe mỗi ngày\" lần thứ nhất",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-03-29 00:00:00",
-                  "FinishTime": "2021-04-07 23:59:00",
-                  "UCAStatus": 1
-                }
               ]
             }
           ]
@@ -500,16 +380,6 @@
               "Proof": 1,
               "ProofText": 0,
               "UserCriteriaActivityLst": [
-                {
-                  "UCAId": 6738234,
-                  "AId": 1706,
-                  "AName": "Hưởng ứng lời kêu gọi “Toàn dân đoàn kết, ra sức phòng, chống dịch bệnh Covid-19\"",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-06-03 00:00:00",
-                  "FinishTime": "2021-07-31 00:00:00",
-                  "UCAStatus": 1
-                }
               ]
             },
             {
@@ -524,16 +394,6 @@
               "Proof": 1,
               "ProofText": 0,
               "UserCriteriaActivityLst": [
-                {
-                  "UCAId": 6738235,
-                  "AId": 1596,
-                  "AName": "CỐC TRÀ ĐÁ VÌ CỘNG ĐỒNG 20202",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-04-01 00:00:00",
-                  "FinishTime": "2021-06-01 00:00:00",
-                  "UCAStatus": 1
-                }
               ]
             },
             {
@@ -574,56 +434,6 @@
               "Proof": 1,
               "ProofText": 0,
               "UserCriteriaActivityLst": [
-                {
-                  "UCAId": 6738236,
-                  "AId": 1600,
-                  "AName": "Tham gia truyền thông cho sự kiện Job Fair 2021",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-04-18 08:00:00",
-                  "FinishTime": "2021-04-18 17:00:00",
-                  "UCAStatus": 1
-                },
-                {
-                  "UCAId": 6738237,
-                  "AId": 1551,
-                  "AName": "TÌM HIỂU QUY ĐỊNH VỀ PHÒNG CHỐNG COVID - 19",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-03-15 00:00:00",
-                  "FinishTime": "2021-03-22 00:00:00",
-                  "UCAStatus": 1
-                },
-                {
-                  "UCAId": 6738238,
-                  "AId": 1418,
-                  "AName": "Tham gia Hội thi “Olympic tiếng Anh HSSV toàn quốc” lần thứ IV, năm 2021",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-02-09 00:00:00",
-                  "FinishTime": "2021-04-02 23:59:00",
-                  "UCAStatus": 1
-                },
-                {
-                  "UCAId": 6738239,
-                  "AId": 1675,
-                  "AName": "CUỘC THI \"TÌM HIỂU LỊCH SỬ KHÁNG CHIẾN DÂN TỘC VIỆT\"",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-05-18 20:30:00",
-                  "FinishTime": "2021-05-22 23:59:00",
-                  "UCAStatus": 1
-                },
-                {
-                  "UCAId": 6738240,
-                  "AId": 1612,
-                  "AName": "CUỘC THI “TÌM HIỂU VỀ ĐOÀN THANH NIÊN CỘNG SẢN HỒ CHÍ MINH”",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-03-22 00:00:00",
-                  "FinishTime": "2021-03-25 00:00:00",
-                  "UCAStatus": 1
-                }
               ]
             },
             {
@@ -717,16 +527,6 @@
               "Proof": 1,
               "ProofText": 0,
               "UserCriteriaActivityLst": [
-                {
-                  "UCAId": 6738241,
-                  "AId": 1635,
-                  "AName": "Cuộc thi tìm hiểu một số kiến thức pháp luật đối với sinh viên (Kỳ 20202)",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-04-23 00:00:00",
-                  "FinishTime": "2021-05-30 16:00:00",
-                  "UCAStatus": 1
-                }
               ]
             },
             {
@@ -741,46 +541,6 @@
               "Proof": 1,
               "ProofText": 0,
               "UserCriteriaActivityLst": [
-                {
-                  "UCAId": 6738242,
-                  "AId": 1632,
-                  "AName": "Cài đặt và sử dụng ứng dụng VssID – Bảo hiểm xã hội số",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-04-21 00:00:00",
-                  "FinishTime": "2021-05-07 23:59:00",
-                  "UCAStatus": 1
-                },
-                {
-                  "UCAId": 6738243,
-                  "AId": 1608,
-                  "AName": "Lễ trao giấy chứng nhận cảm tình Đảng năm 2020 và Phát động cuộc thi viết về Đảng \"Màu cờ dưới ánh bình minh\" năm 2021",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-04-09 17:00:00",
-                  "FinishTime": "2021-07-15 00:00:00",
-                  "UCAStatus": 1
-                },
-                {
-                  "UCAId": 6738244,
-                  "AId": 1613,
-                  "AName": "Cuộc thi viết \"Màu cờ dưới ánh bình minh\" năm 2021",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-04-11 00:00:00",
-                  "FinishTime": "2021-05-19 00:00:00",
-                  "UCAStatus": 1
-                },
-                {
-                  "UCAId": 6738245,
-                  "AId": 1414,
-                  "AName": "Sinh viên ĐH Bách khoa Hà Nội nâng cao nhận thức về phòng chống dịch Covid học kỳ 20202",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-02-08 00:00:00",
-                  "FinishTime": "2021-02-28 23:59:00",
-                  "UCAStatus": 1
-                }
               ]
             },
             {
@@ -808,16 +568,6 @@
               "Proof": 1,
               "ProofText": 0,
               "UserCriteriaActivityLst": [
-                {
-                  "UCAId": 6738246,
-                  "AId": 1671,
-                  "AName": "Cuộc thi online \"Kỉ niệm 131 năm ngày sinh chủ tịch Hồ Chí Minh (19/5/1890 - 19/5/2021)",
-                  "CreateUser": "20194461",
-                  "CreateDate": "2021-07-17 21:55:37",
-                  "StartTime": "2021-05-19 09:00:00",
-                  "FinishTime": "2021-05-19 21:00:00",
-                  "UCAStatus": 1
-                }
               ]
             }
           ]

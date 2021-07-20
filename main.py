@@ -5,8 +5,8 @@ from algo.backtracking import ActivityViewAlgo, get_max_point
 from schemas.request_schemas import User, RqtActivity, RqtActivityUser, RqtMarkCriteria, RqtActivityUserCId
 from schemas.schemas import UAStatusClass
 
-TOKEN = ""
-MSSV = ""
+TOKEN = "3A176CF85B17302EA173C2E5D0D8EF40"
+MSSV = "20194447"
 
 adi = {"UserCode": MSSV, "Semester": "2020-2"}
 
@@ -24,6 +24,7 @@ activity_with_criteria_list = [me.get_activity_by_id(RqtActivity(AId= index, **u
                                for index in id_all_activity]
 
 activities_accept_algo = [ActivityViewAlgo(**activity.dict()) for activity in activity_with_criteria_list]
+activities_accept_algo = list(set(activities_accept_algo))
 (max_point, drl) = get_max_point(activities_accept_algo)
 mark_criteria = RqtMarkCriteria.parse_obj({**u.dict(), **drl.dict(), **adi})
 mark_criteria = mark_criteria.json().encode('utf-8')
@@ -36,3 +37,7 @@ for ctype in drl.CriteriaTypeDetailsLst:
         print("\t\tCGROUP", cgroup.get_current_point())
         for criteria in cgroup.UserCriteriaDetailsLst:
             print("\t\t\tC ", criteria.get_current_point())
+            print("\t\t\t ", criteria.UserCriteriaActivityLst)
+
+print(drl.CriteriaTypeDetailsLst[1].CriteriaGroupDetailsLst[1].UserCriteriaDetailsLst[1])
+print(drl.CriteriaTypeDetailsLst[1].CriteriaGroupDetailsLst[1].UserCriteriaDetailsLst[3])
