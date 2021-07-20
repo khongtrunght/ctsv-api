@@ -13,7 +13,7 @@ class UAStatusClass(int, Enum):
 
 
 class PointCal(BaseModel):
-    CurrentPoint: Optional[float] = 0.0
+    CurrentPoint: Optional[int] = 0
 
     @abstractmethod
     def get_max_point(self):
@@ -37,9 +37,11 @@ class Criteria(BaseModel):
     CId: int
     CName: str
     CType: int
-    CMaxPoint: float
+    CMaxPoint: int
     CStatus: int
 
+class ActivityId(BaseModel):
+    AId : int
 
 class CriteriaView(PointCal):
     def re_caculate_current_point(self):
@@ -48,10 +50,13 @@ class CriteriaView(PointCal):
     CGroupId: int = None
     CId: int
     CName: str
-    CMaxPoint: float
+    CMaxPoint: int
+    UCPoint : Optional[int] = 10
+    UserCriteriaActivityLst: List[ActivityId] = []
 
     def get_max_point(self):
         return max(self.CMaxPoint,0)
+
 
 
 class Activity(BaseModel):
@@ -94,7 +99,7 @@ class ActivityView(BaseModel):
 class CriteriaGroup(PointCal):
     CGId: int
     CGName: str
-    CGMaxPoint: float
+    CGMaxPoint: int  #moi sua
     UserCriteriaDetailsLst: List[CriteriaView]
 
     def get_max_point(self):
@@ -105,11 +110,14 @@ class CriteriaGroup(PointCal):
                                 self.get_max_point())
 
 
+
+
+
 class CriteriaType(PointCal):
     CTId: int
     CTName: str
-    CTPoint: float
-    CTMaxPoint: float
+    CTPoint: int
+    CTMaxPoint: int
     CriteriaGroupDetailsLst: List[CriteriaGroup]
 
     def get_max_point(self):
@@ -122,7 +130,7 @@ class CriteriaType(PointCal):
 
 class DRL(PointCal):
     CriteriaTypeDetailsLst: List[CriteriaType]
-    MaxPoint: float = 100.0
+    MaxPoint: int = 100
 
     def re_caculate_current_point(self):
         self.CurrentPoint = min(sum([ct.get_current_point() for ct in self.CriteriaTypeDetailsLst]),
@@ -130,3 +138,5 @@ class DRL(PointCal):
 
     def get_max_point(self):
         return self.MaxPoint
+
+
