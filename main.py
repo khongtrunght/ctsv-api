@@ -5,8 +5,8 @@ from algo.backtracking import ActivityViewAlgo, get_max_point
 from schemas.request_schemas import User, RqtActivity, RqtActivityUser, RqtMarkCriteria, RqtActivityUserCId
 from schemas.schemas import UAStatusClass
 
-TOKEN = "3A176CF85B17302EA173C2E5D0D8EF40"
-MSSV = "20194447"
+TOKEN = ""
+MSSV = ""
 
 adi = {"UserCode": MSSV, "Semester": "2020-2"}
 
