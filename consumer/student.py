@@ -1,12 +1,15 @@
 from uplink import Consumer, Body, post, headers
 
+
+from uplink.auth import BearerToken
+
 from schemas.request_schemas import *
 from schemas.response_schemas import RspCriteriaTypeDetails, RspActivityView
-from models.drl_graph import cid_list
-from schemas.schemas import ActivityView
 
+br = BearerToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlllRjZtZWZoWVM1ZmpLYXk4QlByNEhHVDRBMCIsImtpZCI6IlllRjZtZWZoWVM1ZmpLYXk4QlByNEhHVDRBMCJ9.eyJhdWQiOiJodHRwczovL2N0c3YuaHVzdC5lZHUudm4iLCJpc3MiOiJodHRwczovL2Fzc28uaHVzdC5lZHUudm4vYWRmcyIsImlhdCI6MTYyNjc4ODgyMSwiZXhwIjoxNjI2NzkyNDIxLCJhdXRoX3RpbWUiOjE2MjY3ODg4MjEsIm5vbmNlIjoiODI0ZDM1OTctYWVmZS00OTQzLWI1MWYtMmU5NTA4M2VjODIzIiwic3ViIjoiWWpNc25GNG9yS2NBemcwcS9oMzU1L0J1bVZRSExtSXNiN3FJKzQwVkx0MD0iLCJ1cG4iOiJ0aGFuZy5scTE5NDgzOEBzaXMuaHVzdC5lZHUudm4iLCJ1bmlxdWVfbmFtZSI6IkhVU1RcXFRIQU5HLkxRMTk0ODM4IiwicHdkX3VybCI6Imh0dHBzOi8vYXNzby5odXN0LmVkdS52bi9hZGZzL3BvcnRhbC91cGRhdGVwYXNzd29yZC8iLCJzaWQiOiJTLTEtNS0yMS0yNzQ2MjUxMDA3LTEzMjQ1OTUyMDYtNzgxNjU0MzUxLTY3Mzg0In0.LZKZnejGHjvxc8VbbUaE--CLvYSRA8vn6iVzi0zRtCUyW0kHqxdQMRyXXLtLA0iAvtGFlOi1CUfWuYPZ3eJiSGEbDWn086XQEUIxqGpWHH9lQ2tGHHeibZE68SfkLXWvkg6Qc1DRIGs2-mBu-172mnwglOvvB8YS3s4HOkeKpjekQ8AMKsj664EjNyeh57srCOl-qQrhy5DPhIOLuFMawIeZ_Fp_9jmZShtAuFSSfuN8grrih576Q8Igo6RyDtz4wPXAvVJP6jrGxIEht8jfavnvyyUOxqTYwRkBGzH3vdm3MQ_5hexm8wi9ghg5QAHnw3ltOOpxyFHL7O3AOlRBjw")
 
 class Student(Consumer):
+
     @post("api-t/Activity/GetActivityById")
     def get_activity_by_id(self, user: Body(type=RqtActivity)) -> RspActivityView:
         """Get detail info for an activity by id"""
@@ -31,12 +34,10 @@ class Student(Consumer):
     def get_activity_by_user(self, user_activity: Body(type=RqtActivityUser)) -> RspActivityView:
         pass
 
-    def get_all_possible_activites(self, user: Body(type=RqtActivityUserCId)) -> List[int]:
-        out_put = []
-        for id in cid_list:
-            user.CId = id
-            op = self.get_activity_by_cid(user).Activities
-            for activity in op:
-                out_put.append(activity.AId)
+    @post("api-t/User/GetUserInfo")
+    def get_user_info(self, user : Body):
+        pass
 
-        return out_put
+
+
+

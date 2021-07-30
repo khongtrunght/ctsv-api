@@ -1,6 +1,7 @@
 from datetime import datetime
 from typing import Optional, List
 
+import pydantic
 from pydantic import BaseModel
 
 from schemas.schemas import CriteriaGroup, CriteriaType, DRL
@@ -16,9 +17,12 @@ class RqtActivity(User):
 
 
 class RqtCriteria(User):
-    UserCode: str
+    UserCode: str = None
     Semester: str
 
+    @pydantic.validator('UserCode', pre=True, always=True)
+    def default_ts_usercode(cls, v, *, values, **kwargs):
+        return v or values['UserName']
 
 class RqtActivityUser(User):
     UserCode: str

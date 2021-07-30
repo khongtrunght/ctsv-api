@@ -1,8 +1,12 @@
 from schemas.schemas import DRL
 
-drl = DRL.parse_file('resources/drl.json')
-cid_list = []
-for ctype in drl.CriteriaTypeDetailsLst:
-    for cgroup in ctype.CriteriaGroupDetailsLst:
-        for criteria in cgroup.UserCriteriaDetailsLst:
-            cid_list.append(criteria.CId)
+
+
+class Graph:
+    def __init__(self, drl : DRL, activities_lst):
+        self.drl = drl
+        self.activities_lst = activities_lst
+        self.construct_graph()
+
+    def construct_graph(self):
+        self.activities_lst

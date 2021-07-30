@@ -1,98 +1,84 @@
-import json
 import logging
-from typing import List, Optional
+from copy import deepcopy
 
-from pydantic import BaseModel, parse_obj_as
-from models.drl_graph import drl
-from schemas.request_schemas import RqtMarkCriteria, User
-from schemas.schemas import ActivityView, CriteriaView
-
-logging.basicConfig(filename='test.log', encoding='utf-8', level=logging.INFO)
+from schemas.schemas import DRL, ActivitiesLst
 
 
-class ActivityViewAlgo(ActivityView):
-    currentCriteria: Optional[CriteriaView]
+class Backtracking:
+    def __init__(self, drl:DRL, a_list:ActivitiesLst):
+        self.drl = drl
+        self.a_list = a_list
+        self.max_point = 0
+        self.drl_optimal = None
+        self.a_list_optimal = None
 
-    def get_length_clist(self):
-        return len(self.CriteriaLst)
+        self.construct_graph()
 
-    def set_criteria(self, index):
-        assert index < self.get_length_clist()
-        self.currentCriteria = self.CriteriaLst[index]
-        self.currentCriteria.set_current_point(self.currentCriteria.get_max_point())
+    def construct_graph(self):
+        self.drl.assignActivities(a_list=self.a_list)
 
-    def reset_criteria(self, index, value):
-        assert index < self.get_length_clist()
-        self.currentCriteria.set_current_point(value)
+    def optimize(self):
+        self.a_list.sort(key=lambda a: a.get_length_clist())
+        self.back_track()
+        self.contruct_optimal_graph()
 
-
-class OutputActivitiesLst(BaseModel):
-    __root__: List[ActivityViewAlgo]
-
-
-def get_max_point(a_list: List[ActivityViewAlgo], drl=drl):
-    global max_point
-    max_point = 0
-
-    def construct_graph(a_list, drl):
-        ki_trc = []
-        criteria_dict = {}
-        for ctype in drl.CriteriaTypeDetailsLst:
-            for cgroup in ctype.CriteriaGroupDetailsLst:
-                for criteria in cgroup.UserCriteriaDetailsLst:
-                    criteria_dict[criteria.CId] = criteria
-
-        for activity in a_list:
-            new_list = list()
-            for criteria in activity.CriteriaLst:
-                # Check hoat dong ki nay
-                if criteria.CId in criteria_dict.keys():
-                    new_list.append(criteria_dict[criteria.CId])
-                else:
-                    ki_trc.append(activity)
-                    logging.info(f'Found ki trc : {activity}')
-            activity.CriteriaLst = new_list
-
-        a_list = [a for a in a_list if a not in ki_trc]
-        return a_list, drl
-
-    def back_track(a_list=a_list, index=0, drl=drl):
-        global max_point, best_list, s, drl_copy
-        if index == len(a_list):
-            max_curr = drl.get_current_point()
-            if max_curr > max_point:
-                max_point = max_curr
-                s = OutputActivitiesLst(__root__=a_list)
-                drl_copy = drl.copy(deep=True)
+    def back_track(self, index=0):
+        if index == self.a_list.get_length():
+            max_curr = self.drl.get_current_point()
+            if max_curr > self.max_point:
+                self.max_point = max_curr
+                self.a_list_optimal = deepcopy(self.a_list)
+                self.drl_optimal = self.drl.copy(deep=True)
         else:
-            for number in range(a_list[index].get_length_clist()):
-                tmp = a_list[index].CriteriaLst[number]
-                crr_cpoint = tmp.get_current_point()
-                if tmp.get_current_point() < tmp.get_max_point():
-                    a_list[index].set_criteria(number)
-                elif (number + 1 == a_list[index].get_length_clist()):
-                    a_list[index].set_criteria(number)
+            for number in range(self.a_list.get(index).get_length_clist()):
+                tieu_chi = self.a_list.get(index).CriteriaLst[number]
+                is_dc_chon = tieu_chi.duoc_chon()
+                if not tieu_chi.duoc_chon():
+                    self.a_list.get(index).set_criteria(number)
+                elif (number + 1 == self.a_list.get(index).get_length_clist()):
+                    self.a_list.get(index).set_criteria(number)
                 else:
                     continue
-                back_track(a_list, index + 1)
-                a_list[index].reset_criteria(number, crr_cpoint)
+                self.back_track(index+1)
+                if not is_dc_chon:
+                    tieu_chi.bo_chon()
 
-    a_list, drl = construct_graph(a_list, drl)
-    a_list.sort(key=lambda a: a.get_length_clist())
-    back_track(a_list, drl=drl)
+    def contruct_optimal_graph(self):
+        criteria_activity = {}
+        for activity in self.a_list_optimal.__root__:
+            if activity.currentCriteria.CId not in criteria_activity.keys():
+                criteria_activity[activity.currentCriteria.CId] = [activity.copy(include={"AId"}), ]
+            else:
+                criteria_activity[activity.currentCriteria.CId].append(activity.copy(include={"AId"}))
 
-    criteria_activity = {}
-    for activity in s.__root__:
-        if activity.currentCriteria.CId not in criteria_activity.keys():
-            criteria_activity[activity.currentCriteria.CId] = [activity.copy(include={"AId"}), ]
-        else:
-            criteria_activity[activity.currentCriteria.CId].append(activity.copy(include={"AId"}))
+        for ctype in self.drl_optimal.CriteriaTypeDetailsLst:
+            for cgroup in ctype.CriteriaGroupDetailsLst:
+                for criteria in cgroup.UserCriteriaDetailsLst:
+                    if criteria.CId in criteria_activity.keys():
+                        criteria.UserCriteriaActivityLst = criteria_activity[criteria.CId]
 
-    drl = drl_copy
-    for ctype in drl.CriteriaTypeDetailsLst:
-        for cgroup in ctype.CriteriaGroupDetailsLst:
-            for criteria in cgroup.UserCriteriaDetailsLst:
-                if criteria.CId in criteria_activity.keys():
-                    criteria.UserCriteriaActivityLst = criteria_activity[criteria.CId]
 
-    return max_point, drl
+    def export_optimal(self, exportor):
+        exportor.store(self.drl_optimal)
+
+    def get_drl_optimal(self) -> DRL:
+        return self.drl_optimal
+
+
+
+class PrintExportor:
+    def store(self,drl):
+        self.drl = drl
+
+    def print(self):
+        print("DRL", self.drl.get_current_point())
+        for ctype in self.drl.CriteriaTypeDetailsLst:
+            print("\tCTYPE", ctype.get_current_point())
+            for cgroup in ctype.CriteriaGroupDetailsLst:
+                print("\t\tCGROUP", cgroup.get_current_point())
+                for criteria in cgroup.UserCriteriaDetailsLst:
+                    print("\t\t\tC ", criteria.get_current_point())
+                    print("\t\t\t ", criteria.UserCriteriaActivityLst)
+
+
+
