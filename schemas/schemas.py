@@ -160,14 +160,13 @@ class ActivityViewAlgo(ActivityView):
         self.currentCriteria = self.CriteriaLst[index]
         self.currentCriteria.chon()
 
-
     def reset_criteria(self, index, value):
         assert index < self.get_length_clist()
         self.currentCriteria.set_current_point(value)
 
 
 class ActivitiesLst(BaseModel):
-    __root__: List[ActivityViewAlgo]
+    __root__: Set[ActivityViewAlgo]
 
     def reassign_criteria(self, criteria_dict: Dict[int, CriteriaView]) -> None:
         for activity in self.__root__:
@@ -179,7 +178,7 @@ class ActivitiesLst(BaseModel):
 
     def add_activity(self, a: object) -> None:
         if a not in self.__root__:
-            self.__root__.append(a)
+            self.__root__.add(a)
 
     def get_activities_lst(self):
         return self.__root__
@@ -214,7 +213,7 @@ class DRL(PointCal):
                     cid_list.append(criteria.CId)
         return cid_list
 
-    def assignActivities(self, a_list: ActivitiesLst) :
+    def assignActivities(self, a_list: ActivitiesLst):
         criteria_dict = {}
         for ctype in self.CriteriaTypeDetailsLst:
             for cgroup in ctype.CriteriaGroupDetailsLst:

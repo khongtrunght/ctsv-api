@@ -32,7 +32,7 @@ class InfoGet:
 
     def get_list_of_activities(self, cid_lst: List[int]):
         id_lst = self.get_list_of_activities_id(cid_lst)
-        activities_lst = ActivitiesLst(__root__=[])
+        activities_lst = ActivitiesLst(__root__=OrderedSet)
         for id in id_lst:
             activity = self.api.get_activity_by_id({**self.user.dict(), 'AId': id}).Activities[0]
             activities_lst.add_activity(ActivityViewAlgo(**activity.dict()))
